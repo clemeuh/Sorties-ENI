@@ -1,13 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<div class="container">
+    <div class="row justify-content-between">
+        <a href="#" title="logo">
+            <img src="{{ asset ('img/logo.png') }}"  class="col-4.col-xs-2.clo-md-3 img-fluid" alt="logo">
+        </a>
 
-</body>
-</html>
+        <div class="menu flex-row-reverse col-4 mt-5">
+            <p class="m-3"><a href="#" title="Home">Accueil</p>
+            <p class="m-3"><a href="#" title="Mon profil">Mon profil</a></p>
+            <p class="m-3"><a href="#" title="Se déconnecter">Se déconnecter</a></p>
+    </div>
+{#  {% if app.user %}
+
+            <li><a href="{{ path('series_create') }}" title="Create a new serie">Create</a></li>
+            <li><a href="{{ path('app_logout') }}" title="Logout">Logout ({{ app.user.firstname }})</a></li>
+
+        {% else %}
+
+            <li><a href="{{ path('app_login') }}" title="Login">Login</a></li>
+            <li><a href="{{ path('app_register') }}" title="Create account">Register</a></li>
+
+        {% endif %} #}
+
+
+    </div>
+        </div>
