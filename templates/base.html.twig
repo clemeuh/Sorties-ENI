@@ -1,19 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Sorties-ENI{% endblock %}</title>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap">
+
+    <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    {% block extrastyles %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>
+            <a href="{{ path('Connexion') }}">
+                <img src="{{ asset('img/Logo.png') }}" alt="Logo Sorties-ENI!">
+            </a>
+        </h1>
+        {% include('inc/header.html.twig') %}
+    </header>
+    <main>{% block body %}{% endblock %}</main>
+    <footer>
+        <div>&copy;{{ "now"|date("Y") }} DreamTeam</div>
+        {% include('inc/header.html.twig') %}
+    </footer>
+</div>
+</body>
 </html>
