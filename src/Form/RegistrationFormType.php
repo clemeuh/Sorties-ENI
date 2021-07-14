@@ -2,9 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Campus;
 use App\Entity\Participant;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,9 +25,10 @@ class RegistrationFormType extends AbstractType
             ->add('nom', TextType::class, [
                 'label'=>'Nom'
             ])
-            ->add('prenom')
-            ->add('mail')
-            ->add('telephone', null, [
+            ->add('prenom',TextType::class, [ 'label'=>'Prenom'])
+            ->add('mail',EmailType::class, ['label'=>'Email'])
+            ->add('telephone', TextType::class, [
+                'label' => 'Télephone',
                 'required' => false
                 ])
             ->add('Password', RepeatedType::class, [
@@ -37,12 +41,14 @@ class RegistrationFormType extends AbstractType
                 'first_options'  => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Confirmation Mot de passe'],
             ])
-            #->add('passwordVerif', PasswordType::class,[
-            #    'attr'=>['placeholder'=>'Resaisir password'],
-            #    'label'=>'Ressaisir mot de passe'
-            #   ])
-            ->add('actif')
-            ->add('administrateur')
+
+            ->add('actif', CheckboxType::class ,['label'=>'Actif'])
+            ->add('administrateur',CheckboxType::class,['label'=>'Administrateur'])
+            ->add('campus', EntityType::class, [
+                'label' => 'Campus :',
+                'class' =>Campus::class,
+                'choice_label' => 'nom'
+            ]);
 
         ;
     }
