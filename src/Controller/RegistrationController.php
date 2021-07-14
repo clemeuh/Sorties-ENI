@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Campus;
 use App\Entity\Participant;
+use App\Form\CreationCampusType;
 use App\Form\RegistrationFormType;
 use App\Security\AppLoginAuthenticator;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +32,7 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the password
-            $user -> setRoles("ROLE_USER");
+            $user -> setRoles(["ROLE_USER"]);
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -52,6 +55,29 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/CreationCampus", name="app_CreationCampus")
+     */
+    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $campus = new Campus();
+        $CampusForm = $this->createForm(CreationCampusType::class, $campus);
+
+        $CampusForm->handleRequest($request);
+
+        if ($CampusForm->isSubmitted() && $CampusForm->isValid()){
+            $entityManager->persist($campus);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Campus ajouté !');
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('registration/CreationCampus.html.twig', [
+            'campusForm' => $CampusForm->createView()
         ]);
     }
 }
