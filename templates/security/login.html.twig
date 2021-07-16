@@ -6,6 +6,7 @@
 
     <div class="body-login">
         {% include ('inc/header.html.twig') %}
+
         <div class="login-box">
             <form method="post" class="form-login">
                 {% if error %}
@@ -14,19 +15,19 @@
 
                 {% if app.user %}
                     <div class="mb-3">
-                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        Vous êtes déjà connecté {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
                     </div>
                 {% endif %}
 
                 <h1 class="titre-login">Login</h1>
                 <div class="core-login">
                     <div class="text-box">
-                        <!--<label for="inputMail">Mail</label>-->
-                        <input type="text" placeholder="Mail" value="{{ last_username }}" name="mail" id="inputMail" class="textform" autocomplete="username" required autofocus>
+
+                        <input type="text" placeholder="Mail" value="" name="mail" id="inputMail" class="textform" autocomplete="username" required autofocus>
                     </div>
                     <div class="text-box">
-                        <!--<label for="inputPassword">Password</label>-->
-                       <input type="password" placeholder="Password" name="password" id="inputPassword" class="textform" autocomplete="current-password" required>
+
+                       <input type="password" placeholder="Password" name="password" id="inputPassword" class="textform"  required> <!--autocomplete="current-password"-->
                     </div>
                         <input type="hidden" name="_csrf_token"
                                value="{{ csrf_token('authenticate') }}"
