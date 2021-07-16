@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+     Modifier une sortie   
+{% endblock %} 
+
+
+{% block stylesheets %}
+         
+{% endblock %}
+
+
+{% block javascripts %}
+{% endblock %}
+
+
+{% block body %}
+    {% include ('inc/header.html.twig') %}  
+
+    <h1>Modifier une sortie</h1>
+
+    <label>Nom de la sortie</label>
+    <input type="text"></input><br>
+
+    <label>Date et heure de la sortie</label>
+    <input type="date"></input><br>
+
+    <label>Date limite d'inscritpion</label>
+    <input type="date"></input><br>
+
+    <label>Nombre de places</label>
+    <input type="number"></input><br>
+
+    <label>Durée</label>
+    <input type="number"></input><br>
+
+    <label>Description et infos</label>
+    <input type="textarea"></input><br>
+
+    <label>Campus</label>
+    <select>
+        <option value="nantes">Nantes</option>
+        <option value="rennes">Rennes</option>
+        <option value="quimper">Quimper</option>
+        <option value="niort">Niort</option>
+    </select><br>
+
+    <label></label>
+    <select>
+        <option value="nantes">Nantes</option>
+        <option value="rennes">Rennes</option>
+        <option value="quimper">Quimper</option>
+        <option value="niort">Niort</option>
+    </select><br>
+
+    <label>Rue</label>
+    <input type="text"></input><br>
+
+    <label>Code postal</label>
+    <input type="text"></input><br>
+
+    <label>Latitude</label>
+    <input type="text"></input><br>
+
+    <label>Longitude</label>
+    <input type="text"></input><br>
+
+    <button>Enregistrer</button>
+    <button>Publier la sortie</button>
+    <button>Supprimer la sortie</button>
+    <button>Annuler</button>
+
+
+{% endblock %}
