@@ -1,14 +1,21 @@
 <div class="container">
     <div class="row justify-content-between">
-        <a href="#" title="logo">
+        <a href="546" title="logo">
             <img src="{{ asset ('img/logo.png') }}"  class="col-4.col-xs-2.clo-md-3 img-fluid" alt="logo">
         </a>
 
         <div class="menu flex-row-reverse col-4 mt-5">
-            <p class="m-3"><a href="#" title="Home">Accueil</p>
+    {% if app.user %}
+            <p class="m-3"><a href="#" title="Home">Test Reussi {{ app.user.pseudo }}</p>
+            <p class="m-3"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a></p>
             <p class="m-3"><a href="#" title="Mon profil">Mon profil</a></p>
-            <p class="m-3"><a href="#" title="Se déconnecter">Se déconnecter</a></p>
-    </div>
+
+        {#{% else %}#}
+    {% endif %}
+        <!-- <div class="menu flex-row-reverse col-4 mt-5">-->
+            <p class="m-3"><a href="#" title="Home">Accueil</p></a>
+        </div>
+
 {#  {% if app.user %}
 
             <li><a href="{{ path('series_create') }}" title="Create a new serie">Create</a></li>
@@ -19,7 +26,7 @@
             <li><a href="{{ path('app_login') }}" title="Login">Login</a></li>
             <li><a href="{{ path('app_register') }}" title="Create account">Register</a></li>
 
-        {% endif %} #}
+#}
 
 
     </div>

@@ -32,8 +32,8 @@ class ParticipantController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the password
             $user -> setRoles(["ROLE_USER"]);
+            // encode the password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,
@@ -86,9 +86,9 @@ class ParticipantController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+         if ($this->getUser()) {
+             return $this->redirectToRoute('main_test');
+         }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -101,9 +101,10 @@ class ParticipantController extends AbstractController
     /**
      * @Route("/logout", name="app_logout")
      */
-    public function logout(): void
+    public function logout()
     {
-        # throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+
+        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
 }
