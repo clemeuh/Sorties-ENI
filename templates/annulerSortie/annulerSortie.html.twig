@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+        Annuler une sortie
+{% endblock %}     
+
+
+{% block stylesheets %}
+          
+{% endblock %}
+
+
+{% block javascripts %}
+{% endblock %}
+
+
+{% block body %}
+    {% include ('inc/header.html.twig') %}
+    <h1>Annuler une sortie</h1>
+
+    <label>Nom de la sortie</label><br>
+
+    <label>Date de la sortie</label><br>
+        
+    <label>Campus</label><br>
+        
+    <label>Lieu</label><br>
+        
+    <label>Motif</label>
+    <input type="textarea"></input><br>
+
+
+    <button>Enregistrer</button>
+
+    <button>Annuler</button>
+{% endblock %}
