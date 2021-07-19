@@ -1,0 +1,29 @@
+{% extends'base.html.twig' %}
+
+{% block body %}
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-datepicker.css') }}">
+
+
+    {% endblock %}
+    <h2>Créer ta sortie!</h2>
+    <div>
+        {{ form_start(formSortie) }}
+        {{ form_widget(formSortie) }}
+        {{ form_end(formSortie) }}
+    </div>
+{% endblock %}
+
+{% block title %}
+    Add a serie | {{ parent() }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src=" {{ asset('bootstrap/bootstrap-datepicker.min.js') }}"></script>
+    <script>
+    jQuery(document).ready(function (){
+        $('.js-datepicker').datepicker();
+    });
+
+</script>
+{% endblock %}
