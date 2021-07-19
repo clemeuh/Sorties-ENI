@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Participant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use PhpParser\Node\Scalar\String_;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -38,14 +37,31 @@ class ParticipantRepository extends ServiceEntityRepository implements PasswordU
         $this->_em->flush();
     }
 
-    public function loadUserByUsername($username):Participant
+    public function loadUserByUsername($pseudoOrMail): ?Participant
     {
-        return $this->createQueryBuilder('p')
-            ->where('p.mail = :key OR p.prenom = :key')
-            ->setParameter('key', $username)
+        return $this->createQueryBuilder('u')
+            ->Where('u.pseudo = :param')
+            ->orWhere('u.mail = :param')
+            ->setParameter('param', $pseudoOrMail)
             ->getQuery()
             ->getOneOrNullResult();
     }
 
+  /*  /**
+     * Return a user based on mail or username
+     * @param $username
+     * @throws NonUniqueResultException
+     */
+
+/*public function loadUserByUsername(string $username)
+{
+    return $this->createQueryBuilder("u")
+    ->where("u.pseudo = :query")
+    ->orWhere("u.mail = :query")
+    ->setParameter("query", $username)
+    ->getQuery()
+    ->getOneOrNullResult();
+
+} */
 
 }
