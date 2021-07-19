@@ -1,8 +1,10 @@
 {% extends'base.html.twig' %}
 
 {% block body %}
+    {% form_theme formSortie 'bootstrap_4_layout.html.twig' %}
     {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap/jquery-timepicker-1.3.5/jquery.timepicker.css') }}">
 
 
     {% endblock %}
@@ -10,20 +12,28 @@
     <div>
         {{ form_start(formSortie) }}
         {{ form_widget(formSortie) }}
+        <button type="submit" name="btnValider" class="btn btn-primary btn-sm mt-2">Enregistrer</button>
         {{ form_end(formSortie) }}
     </div>
 {% endblock %}
 
 {% block title %}
-    Add a serie | {{ parent() }}
+    Add a sortie | {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
-    <script src=" {{ asset('bootstrap/bootstrap-datepicker.min.js') }}"></script>
-    <script>
+   <script src=" {{ asset('bootstrap/bootstrap-datepicker.min.js') }}"></script>
+   <script src=" {{ asset('bootstrap/jquery-timepicker-1.3.5/jquery.timepicker.js') }}"></script>
+   <script>
     jQuery(document).ready(function (){
-        $('.js-datepicker').datepicker();
+        $(`.js-datepicker`).datepicker();
     });
 
-</script>
+   </script>
+    <script>
+        jQuery(document).ready(function (){
+            $(`.timepicker`).timepicker();
+        });
+
+    </script>
 {% endblock %}
