@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Informations campus {% endblock %}
+
+{% block body %}
+    {% include ('inc/header.html.twig') %}
+    <div class="titre-campus">
+        <h1>Gérer les Campus</h1>
+    </div>
+
+
+    <div class="afficherVille">
+        <br>
+        <div class="table offset-3 col-8">
+            <table>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Ville</th>
+                    <th>Actions</th>
+                    <th> </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sites in campus %}
+                    <tr>
+                        <td > {{ sites.nom }} </td>
+                        <td><a href="#" > Supprimer </a></td> {#  {{ path("supprimer_site",{'id':Campus.id}) }} #}
+                        <td><a href="#" > Modifier </a></td> {# {{ path("modifier_site",{'id':campus.id}) }} #}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {{ form_start(campusForm) }}
+
+            {{ form_widget(campusForm) }}
+
+            <button type="submit" class="btn">Créer</button>
+            {{ form_end(campusForm) }}
+            <br>
+        </div>
+
+    </div>
+
+{% endblock %}

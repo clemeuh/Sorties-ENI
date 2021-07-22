@@ -40,25 +40,11 @@ class SortieType extends AbstractType
 
             ->add('nbInscriptionMax', null)
 
-            ->add('duree', ChoiceType::class, array(
-                'multiple' => true,
-                'expanded' => true,
-                'choices' => [
-                    '1h' => '1H00',
-                    '1h30' => '1H30',
-                    '2H' => '2H00',
-                    '2H30'=>'2H30',
-                    '3H00'=>'3H00',
-                    '3H30'=>'3H30',
-                    '4H00'=>'4H00',
-                    '4H30'=>'4H30',
-                    '5H00'=>'5H00',
-                    '5H30'=>'5H30',
-                    '6H00'=>'6H00',
-                    '6H30'=>'6H30',
-
-            ]))
-
+            ->add('duree',IntegerType::class,[
+                'label'=> 'Durée :',
+                'required'=>true,
+                'attr'=>['min'=>1]
+            ])
 
             ->add('dateLimiteInscription', DateTimeType::class,[
                 'attr'=>['class'=>'form-control js-datepicker'],
