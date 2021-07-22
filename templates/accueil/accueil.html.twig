@@ -7,41 +7,65 @@
 
         
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/accueiltest.css') }}">       
+    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">      
 {% endblock %}
 
 
-{% block javascripts %}
-{% endblock %}  
 
 
 {% block body %}
-    {% include ('inc/header.html.twig') %}
-    <div class="body-login">
-    <h1>filtrer les sorties</h1>
+
+    <div class="container">
+    <div class="row justify-content-between">
+        <a href="546" title="logo">
+            <img src="{{ asset ('img/logo.png') }}"  class="col-4.col-xs-2.clo-md-3 img-fluid" alt="logo">
+        </a>
+
+        <div class="menu flex-row-reverse col-4 mt-5">
+    {% if app.user %}
+            <p class="m-3"><a href="#" title="Home">Test Reussi {{ app.user.pseudo }}</p>
+            <p class="m-3"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a></p>
+            <p class="m-3"><a href="#" title="Mon profil">Mon profil</a></p
+    {% endif %}
         
-    <label>Campus</label>
+            <p class="m-3"><a href="#" title="Home">Accueil</p></a>
+        </div>
+
+    {% block javascripts %}
+       <script src="{{ asset('js/accueil.js') }}"></script> 
+    {% endblock %}  
+
+    <div>
+            Date du jour :  {{ "now"|date("d/m/Y") }}<br>
+           {# Participant : {{ user.prenom }} {{ user.nom }} #}
+    </div>
+    
+    
+    <a>Filtrer les sorties</a>
+    
+    <label>Campus :</label>
         <select>
             <option value="nantes">Nantes</option>
             <option value="rennes">Rennes</option>
             <option value="quimper">Quimper</option>
             <option value="niort">Niort</option>
         </select><br>
-    <label>Le nom de la sortie contient</label>
-        <input type="text" placeholder="search"></input><br>
-    <label>Entre</label>
+    <label>Le nom de la sortie contient : </label>
+        <input class="selectp" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search"><br>
+    <label>Entre : </label>
         <input type="date"></input>
-    <a>et</a>
+    <label>&nbsp et &nbsp</label>
         <input type="date"></input></br>
-        
+
+     <div class="cont">   
     <input type="checkbox">Sorties dont je suis l'organisateur/trice</input><br>
     <input type="checkbox">Sorties auxquelles je suis inscrit/e</input><br>
     <input type="checkbox">Sorties auxquelles je ne suis pas inscrit/e</input><br>
     <input type="checkbox">Sorties passées</input><br>
-
-    <div>
-        <table>
-            <tr>
+    </div>
+    
+        <table id="myTable">
+            <tr class="header">
                 <th>Nom de la sortie</th>
                 <th>Date de la sortie</th>
                 <th>Clôture</th>
@@ -52,19 +76,53 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <td>0</td>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>7</td>
+                <td>Parc</td>
+                <td>22/07/2021</td>
+                <td>21/07/2021</td>
+                <td>8/10</td>
+                <td>ouvert</td>
+                <td>X</td>
+                <td>Lucas</td>
+                <td>modifier</td>
             </tr>
+            <tr>
+                <td>Piscine</td>
+                <td>23/07/2021</td>
+                <td>22/07/2021</td>
+                <td>9/10</td>
+                <td>ouvert</td>
+                <td>X</td>
+                <td>Jean</td>
+                <td>modifier</td>
+            </tr>
+            <tr>
+                <td>Forêt</td>
+                <td>24/07/2021</td>
+                <td>23/07/2021</td>
+                <td>7/10</td>
+                <td>ouvert</td>
+                <td>X</td>
+                <td>Cindy</td>
+                <td>modifier</td>
+            </tr>
+        {#
+            {% for sortie in sorties %}
+                <tr>
+                    td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.dateHeureDebut ? sortie.dateHeureDebut|date('d/m/Y H:i') : '' }}</td>
+                    <td>{{ sortie.dateLimiteInscription ? sortie.dateLimiteInscription|date('d/m/Y') : '' }} </td>
+                    <td>{{ sortie.nbInscriptions }} / {{ sortie.nbInscriptionMax }}<</td>
+                    <td>{{ sortie.etat }}</td>
+                    <td>{{ sortie.participant }}</td>
+                    <td>{{ sortie.organisateur }}</td>
+                    <td>modifier</td>
+                </tr>
+            {% endfor %}
+        #}
         </table>
-    </div>
+    
 
-    <button>Rechercher</button><br>
+    <button>Rechercher</button>
 
     <button>Créer une sortie</button>   
 {% endblock %}
