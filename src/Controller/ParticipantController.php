@@ -59,28 +59,7 @@ class ParticipantController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/CreationCampus", name="app_CreationCampus")
-     */
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $campus = new Campus();
-        $CampusForm = $this->createForm(CreationCampusType::class, $campus);
 
-        $CampusForm->handleRequest($request);
-
-        if ($CampusForm->isSubmitted() && $CampusForm->isValid()){
-            $entityManager->persist($campus);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Campus ajouté !');
-            return $this->redirectToRoute('app_login');
-        }
-
-        return $this->render('registration/CreationCampus.html.twig', [
-            'campusForm' => $CampusForm->createView()
-        ]);
-    }
     /**
      * @Route("/login", name="app_login")
      */

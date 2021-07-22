@@ -17,10 +17,6 @@ class Sortie
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idSortie;
 
     /**
      * @ORM\Column(type="string", length=30)
