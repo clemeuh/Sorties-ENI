@@ -5,9 +5,9 @@
         </a>
 
         <div class="menu flex-row-reverse col-4 mt-5">
-            <p class="m-3"><a href="#" title="Home">Accueil</p>
-            <p class="m-3"><a href="#" title="Mon profil">Mon profil</a></p>
-            <p class="m-3"><a href="#" title="Se déconnecter">Se déconnecter</a></p>
+            <p class="m-3"><a href="{{ path('accueil') }}" title="Accueil">Accueil</p>
+            <p class="m-3"><a href="{{ path('app_register') }}" title="Mon profil">Mon profil</a></p>
+            <p class="m-3"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a></p>
     </div>
 {#  {% if app.user %}
 

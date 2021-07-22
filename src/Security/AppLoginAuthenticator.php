@@ -70,7 +70,7 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator implements Pa
         $user = $this->entityManager->getRepository(Participant::class)->findOneBy(['mail' => $credentials['mail']]);
 
         if (!$user) {
-            throw new UsernameNotFoundException('Mail could not be found.');
+            throw new UsernameNotFoundException('Votre email n\'est pas connu');
         }
 
         return $user;
@@ -95,8 +95,8 @@ class AppLoginAuthenticator extends AbstractFormLoginAuthenticator implements Pa
             return new RedirectResponse($targetPath);
         }
 
-        // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        return new RedirectResponse($this->urlGenerator->generate('affichage'));
+
     }
 
     protected function getLoginUrl()

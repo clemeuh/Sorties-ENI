@@ -9,3 +9,22 @@
      max-width: 100%;
      height: auto;
  }
+
+ input, label {
+     box-sizing: border-box;
+     margin-bottom: 1rem;
+
+ }
+
+ label, select {
+     margin-right: 10px;
+     display: block;
+     width: 150px;
+     float: left;
+ }
+ FileType {
+     display :flex;
+     flex-direction: row;
+ }
+
+

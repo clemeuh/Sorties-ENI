@@ -1,7 +1,39 @@
 {% include 'base.html.twig' %}
-<body>
-    <header>
-        {% include 'inc/header.html.twig' %}
-    </header>
-</body>
-</html>
+
+
+
+
+    {% block body %}
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col">
+                </div>
+
+                <div class="col">
+                    <h1 class="text-center">Mon profil</h1>
+                    {{ form_start(profilForm) }}
+
+                    {{ form_widget(profilForm) }}
+
+                    <div class="row justify-content-center">
+
+                        <input type="submit" value="Envoyer" class="m-2">
+                        <input type="reset" value="Annuler" class="m-2">
+
+                    </div>
+
+                    {#{{ form_row(profilForm.imageFile) }}#}
+
+                    {{ form_end(profilForm) }}
+
+                    <div class="col">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+

@@ -23,6 +23,11 @@ class Participant implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
+    private $pseudo;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=true)
+     */
     private $mail;
 
     /**
@@ -32,7 +37,7 @@ class Participant implements UserInterface
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=false)
      */
     private $password;
 
@@ -71,6 +76,11 @@ class Participant implements UserInterface
      * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFile;
 
     public function __construct()
     {
@@ -256,6 +266,36 @@ class Participant implements UserInterface
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param mixed $pseudo
+     */
+    public function setPseudo($pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+
+
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?string $imageFile): self
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }
