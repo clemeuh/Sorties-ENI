@@ -20,12 +20,16 @@
     <h1>Annuler une sortie</h1>
 
     <label>Nom de la sortie</label><br>
+    <label>{{ sortie.nom }}</label>
 
     <label>Date de la sortie</label><br>
+    <label>{{ sortie.dateHeureDebut | date("d/m/yy") }}</label>
         
     <label>Campus</label><br>
-        
+    <label>{{ sortie.organisateur.campus.nom }}</label>
+         
     <label>Lieu</label><br>
+    <label>{{ sortie.lieu.rue }} {{ sortie.lieu.nom }}</label>
         
     <label>Motif</label>
     <input type="textarea"></input><br>
