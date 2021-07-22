@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de campus{% endblock %}
+
+{% block body %}
+    <h1>Créer un Campus pour ENI</h1>
+    <div>
+        {{ form_start(campusForm) }}
+
+            {{ form_widget(campusForm) }}
+
+            <button type="submit" class="btn">Créer</button>
+        {{ form_end(campusForm) }}
+    </div>
+{% endblock %}

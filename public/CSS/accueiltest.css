@@ -1,15 +1,19 @@
-
-* {
- outline: none;
- box-sizing: border-box;
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
 }
 
-
-body {
- background-image: url(https://4kwallpapers.com/images/wallpapers/miami-downtown-florida-acosta-bridge-city-skyline-cityscape-2880x1800-4075.jpg);
- background-size: cover;
+th, td {
+  text-align: center;
+  padding: 16px;
 }
 
+th:first-child, td:first-child {
+  text-align: left;
+}
 
-
-
+tr:nth-child(even) {
+  background-color: #f2f2f2
+}
