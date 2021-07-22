@@ -32,7 +32,7 @@
     <div class="datejour">
             Date du jour :  {{ "now"|date("d/m/Y") }}<br>
            {% if app.user %}  
-           {# Participant : {{ user.prenom }} {{ user.nom }} #}
+            Participant : {{ app.user.prenom}} {{ app.user.nom }}
            {% endif %}
     </div>
     
